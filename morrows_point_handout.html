@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Morrow's Point — Guia do Jogador</title>
+  <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Lato:wght@300;400;700&display=swap"
+    rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #c8bfa8;
+      font-family: 'Lato', 'Georgia', serif;
+      color: #1a1a1a;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .page {
+      background: #e8dfc8;
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 36px 40px 32px;
+      position: relative;
+      box-shadow: 3px 3px 18px rgba(0, 0, 0, 0.35), -1px -1px 6px rgba(0, 0, 0, 0.1);
+      background-image:
+        repeating-linear-gradient(0deg,
+          transparent,
+          transparent 27px,
+          rgba(0, 0, 0, 0.04) 27px,
+          rgba(0, 0, 0, 0.04) 28px);
+    }
+
+    /* Tape decoration */
+    .tape {
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120px;
+      height: 22px;
+      background: rgba(200, 191, 168, 0.7);
+      border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      border-bottom: 2px solid #1a1a1a;
+      padding-bottom: 14px;
+      margin-bottom: 18px;
+    }
+
+    .eyebrow {
+      font-family: 'Special Elite', 'Courier New', monospace;
+      font-size: 10px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #5a4a3a;
+      margin-bottom: 6px;
+    }
+
+    h1 {
+      font-family: 'Special Elite', 'Courier New', monospace;
+      font-size: 34px;
+      letter-spacing: -0.5px;
+      line-height: 1;
+      color: #1a1a1a;
+    }
+
+    .subtitle {
+      font-size: 12px;
+      color: #5a4a3a;
+      margin-top: 5px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    /* Two column layout */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 18px;
+    }
+
+    .one-col {
+      margin-bottom: 18px;
+    }
+
+    /* Section label (stamp style) */
+    .section-label {
+      font-family: 'Special Elite', 'Courier New', monospace;
+      font-size: 9.5px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #c0392b;
+      border-bottom: 1px solid #c0392b;
+      padding-bottom: 3px;
+      margin-bottom: 9px;
+      display: block;
+    }
+
+    p {
+      font-size: 12px;
+      line-height: 1.65;
+      color: #2a2a2a;
+    }
+
+    /* NPC list */
+    .npc-list {
+      list-style: none;
+    }
+
+    .npc-list li {
+      font-size: 11.5px;
+      line-height: 1.5;
+      padding: 5px 0;
+      border-bottom: 1px dashed rgba(0, 0, 0, 0.15);
+      color: #2a2a2a;
+    }
+
+    .npc-list li:last-child {
+      border-bottom: none;
+    }
+
+    .npc-name {
+      font-weight: 700;
+      font-size: 11px;
+    }
+
+    .npc-role {
+      font-size: 10px;
+      color: #5a4a3a;
+      font-style: italic;
+    }
+
+    /* Place tags */
+    .places-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 7px;
+    }
+
+    .place-item {
+      background: rgba(0, 0, 0, 0.05);
+      border-left: 3px solid #5a4a3a;
+      padding: 6px 8px;
+    }
+
+    .place-item strong {
+      font-size: 11px;
+      display: block;
+      font-family: 'Special Elite', monospace;
+    }
+
+    .place-item span {
+      font-size: 10.5px;
+      color: #3a3a3a;
+      line-height: 1.4;
+    }
+
+    /* Questions block */
+    .questions-block {
+      background: rgba(0, 0, 0, 0.05);
+      border: 1px solid rgba(0, 0, 0, 0.15);
+      padding: 16px 18px;
+      margin-bottom: 18px;
+    }
+
+    .questions-block .section-label {
+      margin-bottom: 12px;
+    }
+
+    .q-group {
+      margin-bottom: 12px;
+    }
+
+    .q-group:last-child {
+      margin-bottom: 0;
+    }
+
+    .q-group-title {
+      font-family: 'Special Elite', monospace;
+      font-size: 11px;
+      font-weight: bold;
+      color: #1a1a1a;
+      margin-bottom: 5px;
+      display: block;
+    }
+
+    .q-list {
+      list-style: none;
+    }
+
+    .q-list li {
+      font-size: 11.5px;
+      line-height: 1.55;
+      color: #2a2a2a;
+      padding-left: 14px;
+      position: relative;
+      margin-bottom: 3px;
+    }
+
+    .q-list li::before {
+      content: "—";
+      position: absolute;
+      left: 0;
+      color: #c0392b;
+      font-size: 10px;
+    }
+
+    /* Divider */
+    .divider {
+      border: none;
+      border-top: 1px solid rgba(0, 0, 0, 0.2);
+      margin: 16px 0;
+    }
+
+    /* Footer note */
+    .footer-note {
+      font-family: 'Special Elite', monospace;
+      font-size: 10px;
+      color: #7a6a5a;
+      text-align: center;
+      letter-spacing: 1px;
+      border-top: 1px solid rgba(0, 0, 0, 0.2);
+      padding-top: 12px;
+      margin-top: 4px;
+    }
+
+    /* Stamp */
+    .stamp {
+      position: absolute;
+      bottom: 38px;
+      right: 40px;
+      border: 2px solid rgba(192, 57, 43, 0.5);
+      color: rgba(192, 57, 43, 0.5);
+      font-family: 'Special Elite', monospace;
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 4px 7px;
+      transform: rotate(-8deg);
+      pointer-events: none;
+    }
+
+    /* Cassette decoration */
+    .cassette-line {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 16px;
+      opacity: 0.4;
+    }
+
+    .cassette-line::before,
+    .cassette-line::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: #1a1a1a;
+    }
+
+    .cassette-icon {
+      font-size: 14px;
+      line-height: 1;
+    }
+
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+      }
+
+      .page {
+        box-shadow: none;
+        max-width: 100%;
+        background-image: none;
+        background: white;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <div class="tape"></div>
+
+    <div class="header">
+      <div class="eyebrow">Ordem Paranormal RPG · Campanha dos Jogadores</div>
+      <h1>Morrow's Point</h1>
+      <div class="subtitle">Maine, Outono de 1986</div>
+    </div>
+
+    <div class="cassette-line"><span class="cassette-icon">◼ ▶</span></div>
+
+    <!-- Cenário -->
+    <div class="one-col">
+      <span class="section-label">A Cidade</span>
+      <p>Morrow's Point fica no litoral do Maine, cercada por paredões de pinheiros e conectada ao restante do mundo por
+        uma única estrada rachada — a Rota 9. Quando o inverno chega, a cidade parece encolher: o sinal de rádio chia, a
+        linha telefônica cai e uma névoa fria sobe do Atlântico. A fábrica de conservas que sustentou a cidade por três
+        gerações fechou. Os adultos sobrevivem de bico e silêncio. Quem é de fora, é visto com desconfiança. Quem nasceu
+        aqui, raramente sai. Mas os adolescentes sabem que o que sobrou aqui logo vai acabar — e é exatamente esse vazio
+        que cria espaço para coisas que não deveriam acontecer.</p>
+    </div>
+
+    <hr class="divider">
+
+    <!-- Lugares e Pessoas em duas colunas -->
+    <div class="two-col">
+      <div>
+        <span class="section-label">Lugares</span>
+        <div class="places-grid">
+          <div class="place-item">
+            <strong>O Píer</strong>
+            <span>Ponto de encontro dos adolescentes. Vista do oceano e do farol desativado.</span>
+          </div>
+          <div class="place-item">
+            <strong>Red Lantern Diner</strong>
+            <span>Único lugar aberto até tarde. Jukebox, neon piscando, balcão de fórmica.</span>
+          </div>
+          <div class="place-item">
+            <strong>Neon Oasis</strong>
+            <span>Locadora e arcade. Cheiro de pipoca. O único lugar com energia de verdade.</span>
+          </div>
+          <div class="place-item">
+            <strong>A Escola</strong>
+            <span>Tijolos vermelhos dos anos 50. Armários barulhentos. Assoalho que range.</span>
+          </div>
+          <div class="place-item">
+            <strong>Floresta dos Pinheiros</strong>
+            <span>Escura, opressora. Silêncio quase total. Lendas antigas de pessoas perdidas.</span>
+          </div>
+          <div class="place-item">
+            <strong>Biblioteca Pública</strong>
+            <span>Mansão vitoriana, cheiro de papel velho e mofo. Chão que denuncia quem passa.</span>
+          </div>
+          <div class="place-item">
+            <strong>Igreja de São Judas</strong>
+            <span>Uma igreja antiga de madeira branca com um campanário alto. O sino toca nas horas cheias.</span>
+          </div>
+          <div class="place-item">
+            <strong>Murphy’s Quick-Stop</strong>
+            <span>Posto de gasolina de beira de estrada com uma loja de conveniência que cheira a óleo de motor, salgadinho industrializado e café queimado.</span>
+          </div>
+          <div class="place-item">
+            <strong>Cemitério Greenlawn</strong>
+            <span>Fica na parte mais alta da cidade, cercado por uma grade de ferro batido enferrujada.</span>
+          </div>
+          <div class="place-item">
+            <strong>WMRW - 101.5 FM</strong>
+            <span> Funciona em um cubículo em cima de uma loja de ferragens. Tem apenas um DJ principal.</span>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <span class="section-label">Pessoas</span>
+        <ul class="npc-list">
+          <li>
+            <div class="npc-name">Ethan Carter <span class="npc-role">— amigo, 17 anos</span></div>
+            Quieto e observador. Protege a irmã mais nova, Lorelei, às vezes em excesso. Guarda dinheiro numa lata "para
+            emergências".
+          </li>
+          <li>
+            <div class="npc-name">Lorelei Carter <span class="npc-role">— amiga, 15 anos</span></div>
+            Curiosa, impulsiva, adora lugares proibidos. Faz listas de tudo e guarda recortes de jornal sobre eventos
+            estranhos.
+          </li>
+          <li>
+            <div class="npc-name">Danny "Retro" Diaz <span class="npc-role">— dono da locadora, 24 anos</span></div>
+            Camisa floral, mullet, chiclete de canela. Especialista em filmes de terror e teorias de plot.
+          </li>
+          <li>
+            <div class="npc-name">Martha Higgins <span class="npc-role">— dona do Diner, 52 anos</span></div>
+            Conhece o histórico de todo morador. Observa mais do que fala.
+          </li>
+          <li>
+            <div class="npc-name">Prof. Evelyn Vance <span class="npc-role">— professora de Química, 45 anos</span></div>
+            Cética e pragmática. Usa óculos de acrílico e tem uma postura séria em sala de aula.
+          </li>
+          <li>
+            <div class="npc-name">Prof. Thomas Hale <span class="npc-role">— professor de Literatura, 39 anos</span></div>
+            Gentil, escuta de verdade, indica livros difíceis. Os alunos gostam dele.
+          </li>
+          <li>
+            <div class="npc-name">Treinador Hank Miller <span class="npc-role">— professor de Educação Física, 38
+                anos</span></div>
+            Ex-atleta, cansado, acha que os jovens são preguiçosos. Fuma escondido atrás da escola.
+          </li>
+          <li>
+            <div class="npc-name">"Grizzly" Bob Jenkins <span class="npc-role">— DJ da WMRW 101.5, 29 anos</span></div>
+            Voz cansada e rouca. Toca rock clássico de madrugada e lê os avisos da cidade.
+          </li>
+          <li>
+            <div class="npc-name">Del. Sean McCarthy <span class="npc-role">— delegado, 56 anos</span></div>
+            Sobrecarregado, olheiras profundas. Os cartazes de desaparecidos se acumulam na parede dele.
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- Bloco de perguntas — elemento principal -->
+    <div class="questions-block">
+      <span class="section-label">Criando seu personagem — Perguntas Norteadoras</span>
+
+      <p style="font-size:11.5px; margin-bottom:12px; color:#3a3a3a;">Você é um adolescente no último ano do colégio em
+        Morrow's Point. Amigo de Ethan e Lorelei. As perguntas abaixo não precisam de resposta certa — são para te
+        ajudar a imaginar quem é essa pessoa. Leia, pense, e traga o que surgir para a sessão zero.</p>
+
+      <div class="two-col" style="margin-bottom:0; gap:16px;">
+        <div>
+          <div class="q-group">
+            <span class="q-group-title">Quem você é</span>
+            <ul class="q-list">
+              <li>Como você prefere ser chamado? Tem apelido?</li>
+              <li>O que você faz nas tardes de sexta — píer, locadora, diner ou algo diferente?</li>
+              <li>Que tipo de adulto você tem medo de se tornar?</li>
+              <li>Você planeja sair de Morrow's Point algum dia, ou já desistiu disso?</li>
+            </ul>
+          </div>
+
+          <div class="q-group">
+            <span class="q-group-title">Com os outros</span>
+            <ul class="q-list">
+              <li>Como você conheceu Ethan? Foram amigos de infância ou se aproximaram depois?</li>
+              <li>Como é sua relação com Lorelei — você a acha engraçada, irritante ou as duas coisas?</li>
+              <li>Tem alguém na cidade em quem você confia de verdade, além do grupo?</li>
+              <li>Tem alguém que você evita? Por quê?</li>
+            </ul>
+          </div>
+        </div>
+
+        <div>
+          <div class="q-group">
+            <span class="q-group-title">O que você carrega</span>
+            <ul class="q-list">
+              <li>Qual é o seu maior segredo — algo que nem seus amigos sabem?</li>
+              <li>Tem algo que aconteceu na sua família que ainda pesa em você?</li>
+              <li>O que você é bom em fazer que ninguém reconhece?</li>
+              <li>Você acredita em coisas que não consegue explicar? Já viu algo estranho?</li>
+            </ul>
+          </div>
+
+          <div class="q-group">
+            <span class="q-group-title">Diante do perigo</span>
+            <ul class="q-list">
+              <li>Quando as coisas ficam difíceis, você age ou espera?</li>
+              <li>Você protege quem você ama mesmo quando é perigoso?</li>
+              <li>Tem uma linha que você não cruzaria — algo que você nunca faria?</li>
+              <li>Se tudo der errado, o que faz você continuar em pé?</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dica rápida -->
+    <div class="one-col" style="margin-bottom:0;">
+      <span class="section-label">Para jogadores iniciantes</span>
+      <p>RPG não tem certo ou errado. Você não precisa "ganhar" — a história é construída em conjunto. Seu personagem
+        pode errar, mentir, ter medo ou mudar de ideia. Isso é bom. Na dúvida, pense no que <em>seu personagem</em>
+        faria, não no que você acha mais esperto. E a regra mais importante: esteja presente e ouça os outros na mesa.
+      </p>
+    </div>
+
+    <div class="stamp">Confidencial</div>
+
+    <div class="footer-note" style="margin-top:18px;">
+      WMRW 101.5 FM · Morrow's Point, Maine · "The Voice of the Point" · ◼ ▶ ■
+    </div>
+  </div>
+</body>
+
+</html>

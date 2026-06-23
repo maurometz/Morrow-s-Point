@@ -348,6 +348,48 @@
       }
     }
 
+    /* CORREÇÕES DE RESPONSIVIDADE (MOBILE) */
+    @media (max-width: 650px) {
+      body {
+        padding: 10px;
+      }
+
+      .page {
+        padding: 28px 20px 24px; /* Reduz o padding interno no mobile */
+      }
+
+      h1 {
+        font-size: 28px; /* Diminui um pouco o título */
+      }
+
+      /* Transforma as duas colunas em uma só */
+      .two-col,
+      .places-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .two-col {
+        gap: 16px;
+      }
+
+      /* Ajusta o posicionamento do carimbo para não vazar da tela */
+      .stamp {
+        bottom: 24px;
+        right: 20px;
+        font-size: 8px;
+        padding: 3px 5px;
+      }
+
+      /* Reajusta a animação do carimbo no mobile para sua nova posição */
+      @keyframes stamp-apply {
+        to {
+          opacity: 1;
+          transform: rotate(-12deg) scale(1);
+        }
+      }
+    }
+
+    /* IMPRESSÃO (Mantendo sem animações) */
     @media print {
       body {
         background: white;
@@ -361,7 +403,6 @@
         background: white;
       }
 
-      /* Desativar animações e garantir cores estáticas para impressão */
       .stamp {
         opacity: 1 !important;
         transform: rotate(-8deg) scale(1) !important;
@@ -383,6 +424,12 @@
         opacity: 1 !important;
         transform: none !important;
         animation: none !important;
+      }
+      
+      /* Mantém as colunas na impressão se o papel for largo o suficiente */
+      .two-col,
+      .places-grid {
+        grid-template-columns: 1fr 1fr;
       }
     }
   </style>
@@ -567,7 +614,7 @@
       <span class="section-label">Para jogadores iniciantes</span>
       <p>RPG não tem certo ou errado. Você não precisa "ganhar" — a história é construída em conjunto. Seu personagem
         pode errar, mentir, ter medo ou mudar de ideia. Isso é bom. Na dúvida, pense no que <em>seu personagem</em>
-        pararia, não no que você acha mais esperto. E a regra mais importante: esteja presente e ouça os outros na mesa.
+        faria, não no que você acha mais esperto. E a regra mais importante: esteja presente e ouça os outros na mesa.
       </p>
     </div>
 

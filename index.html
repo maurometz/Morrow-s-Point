@@ -70,7 +70,7 @@
       font-family: 'Special Elite', 'Courier New', monospace;
       font-size: 34px;
       letter-spacing: -0.5px;
-      line-height: 1;
+      line-height: 1.1;
       color: #1a1a1a;
     }
 
@@ -273,6 +273,50 @@
       line-height: 1;
     }
 
+    /* =========================================
+       RESPONSIVIDADE (MOBILE)
+       ========================================= */
+    @media (max-width: 650px) {
+      body {
+        padding: 10px;
+      }
+
+      .page {
+        padding: 28px 20px 24px;
+      }
+
+      h1 {
+        font-size: 28px;
+      }
+
+      .eyebrow {
+        letter-spacing: 2px;
+      }
+
+      /* Transforma as duas colunas em uma só */
+      .two-col {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      /* Transforma o grid de lugares em uma coluna */
+      .places-grid {
+        grid-template-columns: 1fr;
+      }
+
+      /* Ajusta o espaçamento do bloco de perguntas no mobile */
+      .questions-block .two-col {
+        gap: 16px;
+      }
+
+      /* Reposiciona o carimbo para não vazar da tela */
+      .stamp {
+        bottom: 20px;
+        right: 20px;
+        font-size: 8px;
+      }
+    }
+
     @media print {
       body {
         background: white;
@@ -301,7 +345,6 @@
 
     <div class="cassette-line"><span class="cassette-icon">◼ ▶</span></div>
 
-    <!-- Cenário -->
     <div class="one-col">
       <span class="section-label">A Cidade</span>
       <p>Morrow's Point fica no litoral do Maine, cercada por paredões de pinheiros e conectada ao restante do mundo por
@@ -314,7 +357,6 @@
 
     <hr class="divider">
 
-    <!-- Lugares e Pessoas em duas colunas -->
     <div class="two-col">
       <div>
         <span class="section-label">Lugares</span>
@@ -410,7 +452,6 @@
 
     <hr class="divider">
 
-    <!-- Bloco de perguntas — elemento principal -->
     <div class="questions-block">
       <span class="section-label">Criando seu personagem — Perguntas Norteadoras</span>
 
@@ -418,7 +459,7 @@
         Morrow's Point. Amigo de Ethan e Lorelei. As perguntas abaixo não precisam de resposta certa — são para te
         ajudar a imaginar quem é essa pessoa. Leia, pense, e traga o que surgir para a sessão zero.</p>
 
-      <div class="two-col" style="margin-bottom:0; gap:16px;">
+      <div class="two-col" style="margin-bottom:0;">
         <div>
           <div class="q-group">
             <span class="q-group-title">Quem você é</span>
@@ -465,7 +506,6 @@
       </div>
     </div>
 
-    <!-- Dica rápida -->
     <div class="one-col" style="margin-bottom:0;">
       <span class="section-label">Para jogadores iniciantes</span>
       <p>RPG não tem certo ou errado. Você não precisa "ganhar" — a história é construída em conjunto. Seu personagem
